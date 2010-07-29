@@ -5,16 +5,6 @@ module SettingsMagic
     base.extend(ClassMethods)
   end
  
-  # Example:
-  #
-  # # Controller
-  # class BlogController < ApplicationController
-  # in_place_edit_for :post, :title
-  # end
-  #
-  # # View
-  # <%= in_place_editor_field :post, 'title' %>
-  #
   module ClassMethods
     def settings_for klass, method
       pre = klass.pluralize.downcase + '_'
