@@ -1,0 +1,25 @@
+SettingsMagic
+=============
+
+It's a little plugin written for a weird project where I came to after some years of development.
+It assumes that you have a AR class Setting where all your settings come from and that classes have methods which return an array of fields, for which these classes needs settings for.
+
+
+Example
+=======
+
+In your Setting class:
+
+settings_for "Article", :custom_fields
+
+generates:
+
+def self.articles_custom_fields
+  result = []
+  Article.custom_fields.each do |f|
+    result << Setting.find_or_create_by_name({ :name => "article_"+f, :wert => f.humanize })
+  end
+  result
+end
+
+Copyright (c) 2010 Daniel Schweighöfer, released under the MIT license
